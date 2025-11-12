@@ -31,11 +31,9 @@ export default function Auth() {
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary/5 via-background to-background p-4">
       <div className="w-full max-w-md">
         {/* Back to home */}
-        <Link href="/">
-          <a className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary mb-8 transition-colors">
-            <ArrowLeft className="w-4 h-4" />
-            Zurück zur Startseite
-          </a>
+        <Link href="/" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary mb-8 transition-colors">
+          <ArrowLeft className="w-4 h-4" />
+          Zurück zur Startseite
         </Link>
 
         {/* Auth Card */}
