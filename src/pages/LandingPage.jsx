@@ -5,11 +5,12 @@ import { createPageUrl } from '@/utils';
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
-import { 
-    ArrowRight, 
-    CheckCircle, 
-    Sparkles, 
-    Shield, 
+import WebGLHero from '@/components/3d/WebGLHero';
+import {
+    ArrowRight,
+    CheckCircle,
+    Sparkles,
+    Shield,
     Zap,
     Users,
     TrendingUp,
@@ -32,18 +33,9 @@ const HeroSection = ({ onCTAClick }) => {
     }, []);
 
     return (
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-            {/* Animated Premium Background */}
-            <div className="absolute inset-0 -z-10">
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-slate-900 dark:via-indigo-950 dark:to-purple-950"></div>
-                
-                {/* Animated Gradient Orbs */}
-                <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-br from-blue-400/30 to-purple-400/30 rounded-full blur-3xl animate-pulse"></div>
-                <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-br from-indigo-400/30 to-pink-400/30 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
-                
-                {/* Grid Pattern */}
-                <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAxOGMzLjMxNCAwIDYgMi42ODYgNiA2cy0yLjY4NiA2LTYgNi02LTIuNjg2LTYtNiAyLjY4Ni02IDYtNnoiIHN0cm9rZT0iIzAwMCIgc3Ryb2tlLW9wYWNpdHk9Ii4wNSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9nPjwvc3ZnPg==')] opacity-30"></div>
-            </div>
+        <WebGLHero className="relative min-h-screen flex items-center justify-center overflow-hidden">
+            {/* Subtle Gradient Overlay (over 3D background) */}
+            <div className="absolute inset-0 -z-5 bg-gradient-to-br from-blue-900/10 via-transparent to-pink-900/10 dark:from-blue-950/20 dark:via-transparent dark:to-pink-950/20 pointer-events-none"></div>
 
             <div className="container mx-auto px-6 lg:px-8 py-20 lg:py-32">
                 <div className="max-w-5xl mx-auto text-center">
@@ -140,7 +132,7 @@ const HeroSection = ({ onCTAClick }) => {
                     animation: gradient 3s ease infinite;
                 }
             `}</style>
-        </section>
+        </WebGLHero>
     );
 };
 
