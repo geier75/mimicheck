@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ENV Variable Test</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #000;
+            color: #fff;
+            padding: 40px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            max-width: 800px;
+            background: #111;
+            border: 2px solid #333;
+            border-radius: 12px;
+            padding: 40px;
+        }
+        h1 {
+            color: #00ff88;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .test {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .test h2 {
+            color: #00aaff;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+        .result {
+            font-family: 'Monaco', 'Courier New', monospace;
+            font-size: 14px;
+            padding: 15px;
+            background: #000;
+            border-radius: 6px;
+            margin-top: 10px;
+        }
+        .success { color: #00ff88; }
+        .error { color: #ff4444; }
+        .warning { color: #ffaa00; }
+        .label { color: #aaa; font-size: 13px; margin-bottom: 5px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧪 Environment Variables Test</h1>
+        
+        <div class="test">
+            <h2>Landing Page lädt diese Seite</h2>
+            <div class="label">Stelle sicher dass du diese URL öffnest:</div>
+            <div class="result">
+                http://localhost:3000/landing#auth
+            </div>
+        </div>
+
+        <div class="test">
+            <h2>Test: VITE_MAIN_APP_URL</h2>
+            <div class="label">Diese Variable bestimmt wohin nach Login weitergeleitet wird:</div>
+            <div class="result" id="mainAppUrl">Lädt...</div>
+        </div>
+
+        <div class="test">
+            <h2>Test: VITE_SUPABASE_URL</h2>
+            <div class="label">Supabase Project URL:</div>
+            <div class="result" id="supabaseUrl">Lädt...</div>
+        </div>
+
+        <div class="test">
+            <h2>Test: VITE_SUPABASE_ANON_KEY</h2>
+            <div class="label">Supabase Anon Key (gekürzt):</div>
+            <div class="result" id="supabaseKey">Lädt...</div>
+        </div>
+
+        <div class="test" id="verdict">
+            <h2>✅ Ergebnis</h2>
+            <div class="result" id="result">Prüfe...</div>
+        </div>
+    </div>
+
+    <script type="module">
+        // Simuliere was die Auth.tsx macht
+        const mainUrl = import.meta.env?.VITE_MAIN_APP_URL || 'http://localhost:8005';
+        const supabaseUrl = import.meta.env?.VITE_SUPABASE_URL || 'NOT SET';
+        const supabaseKey = import.meta.env?.VITE_SUPABASE_ANON_KEY || 'NOT SET';
+
+        // Zeige Werte an
+        document.getElementById('mainAppUrl').innerHTML = 
+            mainUrl === 'http://localhost:8005'
+                ? `<span class="success">✅ ${mainUrl}</span>`
+                : `<span class="error">❌ ${mainUrl} (FALSCH! Sollte 8005 sein!)</span>`;
+
+        document.getElementById('supabaseUrl').innerHTML = 
+            supabaseUrl.includes('yjjauvmjyhlxcoumwqlj')
+                ? `<span class="success">✅ ${supabaseUrl}</span>`
+                : `<span class="error">❌ ${supabaseUrl}</span>`;
+
+        document.getElementById('supabaseKey').innerHTML = 
+            supabaseKey !== 'NOT SET' && supabaseKey.length > 100
+                ? `<span class="success">✅ ${supabaseKey.substring(0, 50)}...</span>`
+                : `<span class="error">❌ ${supabaseKey}</span>`;
+
+        // Ergebnis
+        const allGood = 
+            mainUrl === 'http://localhost:8005' &&
+            supabaseUrl.includes('yjjauvmjyhlxcoumwqlj') &&
+            supabaseKey !== 'NOT SET';
+
+        const resultDiv = document.getElementById('result');
+        const verdictDiv = document.getElementById('verdict');
+
+        if (allGood) {
+            resultDiv.innerHTML = `
+                <span class="success">✅ ALLE ENV VARIABLEN KORREKT!</span><br><br>
+                <span class="success">Der Redirect sollte zu Port 8005 gehen!</span><br><br>
+                <span style="color: #aaa;">Nächster Schritt:</span><br>
+                1. Gehe zu: http://localhost:3000/landing#auth<br>
+                2. Melde dich an<br>
+                3. Du solltest zu Port 8005 weitergeleitet werden!
+            `;
+            verdictDiv.style.borderColor = '#00ff88';
+        } else {
+            resultDiv.innerHTML = `
+                <span class="error">❌ ENV VARIABLEN FALSCH!</span><br><br>
+                <span class="warning">⚠️ Das erklärt warum der Redirect zu Port 3000 geht!</span><br><br>
+                <span style="color: #aaa;">Lösung:</span><br>
+                1. Prüfe: /mimicheck-landing/.env<br>
+                2. Sollte enthalten: VITE_MAIN_APP_URL=http://localhost:8005<br>
+                3. Server neu starten!
+            `;
+            verdictDiv.style.borderColor = '#ff4444';
+        }
+
+        // Console Log für Debugging
+        console.log('🧪 ENV VARIABLES TEST:');
+        console.log('VITE_MAIN_APP_URL:', mainUrl);
+        console.log('VITE_SUPABASE_URL:', supabaseUrl);
+        console.log('VITE_SUPABASE_ANON_KEY:', supabaseKey.substring(0, 50) + '...');
+        console.log('All good?', allGood);
+    </script>
+</body>
+</html>
