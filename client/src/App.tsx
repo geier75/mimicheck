@@ -15,6 +15,7 @@ import NotFound from "./pages/NotFound";
 import Impressum from "./pages/Impressum";
 import Datenschutz from "./pages/Datenschutz";
 import AGB from "./pages/AGB";
+import NewApplication from "./pages/NewApplication";
 
 function InnerRouter() {
   const [location] = useLocation();
@@ -39,6 +40,7 @@ function InnerRouter() {
           
           {/* Dashboard (Protected) */}
           <Route path="/dashboard" component={SupabaseDashboard} />
+          <Route path="/dashboard/new" component={NewApplication} />
           <Route path="/dashboard-old" component={Dashboard} />
           
           {/* Legal pages */}

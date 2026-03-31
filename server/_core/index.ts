@@ -33,14 +33,6 @@ async function startServer() {
   // Configure body parser with larger size limit for file uploads
   app.use(express.json({ limit: "50mb" }));
   app.use(express.urlencoded({ limit: "50mb", extended: true }));
-  // REDIRECT: Auth-Bridge zu Port 8005 weiterleiten!
-  app.get('/auth-bridge', (req, res) => {
-    const queryString = new URLSearchParams(req.query as any).toString();
-    const redirectUrl = `http://localhost:8005/auth-bridge?${queryString}`;
-    console.log('🚀 REDIRECT /auth-bridge -> Port 8005:', redirectUrl.substring(0, 100) + '...');
-    res.redirect(302, redirectUrl);
-  });
-
   // OAuth callback under /api/oauth/callback
   registerOAuthRoutes(app);
   // tRPC API
