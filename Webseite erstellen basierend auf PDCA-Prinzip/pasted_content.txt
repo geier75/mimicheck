@@ -1,0 +1,44 @@
+Text file: pasted_content.txt
+Latest content with line numbers:
+1	Flinkly: Kleine Gigs, große Wirkung. Dein Marktplatz für schnelle, kreative & digitale Mikrodienstleistungen in der DACH-Region.
+2	
+3	1. Das Problem
+4	
+5	Kleine Unternehmen & Start-ups in der DACH-Region benötigen oft schnell und unkompliziert digitale Unterstützung (z. B. eine Social-Media-Grafik, einen kurzen Text, eine kleine Recherche), haben aber weder das Budget noch die Zeit, eine Agentur oder einen etablierten Freelancer zu beauftragen. Bestehende globale Plattformen sind oft unpersönlich, komplex und nicht auf lokale rechtliche und kulturelle Gegebenheiten (DSGVO, Steuern) ausgelegt.
+6	
+7	Talentierte & Kreative (Studierende, Berufstätige, Eltern) suchen nach flexiblen, einfachen Möglichkeiten, ihre digitalen Fähigkeiten nebenbei zu monetarisieren. Die Hürden auf großen Plattformen sind hoch, die Konkurrenz ist global und die rechtlichen Rahmenbedingungen sind oft unklar.
+8	
+9	2. Die Lösung: Flinkly
+10	
+11	Flinkly ist ein hyper-fokussierter Online-Marktplatz, der den An- und Verkauf von digitalen Mikrodienstleistungen ("Gigs") in Deutschland, Österreich und der Schweiz radikal vereinfacht. Wir bringen lokale Nachfrage und lokales Talent auf einer vertrauenswürdigen, benutzerfreundlichen und rechtssicheren Plattform zusammen.
+12	
+13	Unsere Mission: Jedem die Möglichkeit zu geben, digitale Aufgaben schnell erledigen zu lassen und jedem Talent einen unkomplizierten Weg zu einem Nebeneinkommen zu bieten.
+14	
+15	3. Produkt & Features
+16	
+17	Fokus auf Micro-Gigs: Dienstleistungen sind bewusst klein und standardisiert (z. B. max. 250 €), um schnelle Abwicklung und klare Erwartungen zu gewährleisten.
+18	
+19	Lokalisierung für DACH:
+20	
+21	DSGVO-Konformität: Hosting und Datenverarbeitung nach europäischen Standards.
+22	
+23	Lokale Zahlungsmethoden: Integration von Klarna/Sofort, TWINT, SEPA etc.
+24	
+25	Rechtliche Hilfestellungen: Einfache Guides zur Kleingewerberegelung und korrekten Rechnungsstellung.
+26	
+27	Intuitive User Experience: Ein extrem einfacher Prozess von der Suche über die Beauftragung bis zur Abnahme des Ergebnisses in wenigen Klicks.
+28	
+29	Sicheres Umfeld: Treuhand-Zahlungssystem (Geld wird erst bei Projektabschluss freigegeben) und ein transparentes Bewertungssystem schaffen Vertrauen.
+30	
+31	4. Zielmarkt & Zielgruppen
+32	
+33	Kunden (Käufer)	Anbieter (Macher)
+34	Start-ups & Kleinunternehmen	Studierende kreativer & digitaler Fächer
+35	Soloselbstständige & Influencer	Berufstätige mit digitalen Skills (Designer, Texter)
+36	Marketing-Teams in KMUs	Eltern in Elternzeit mit flexibler Zeiteinteilung
+37	Privatpersonen für kleine digitale Aufgaben	Jeder mit einem nachweisbaren digitalen Talent
+38	Der Markt für die Gig Economy in Europa wächst stetig und es gibt eine steigende Nachfrage nach agilen, lokalen und digitalen Lösungen.
+39	
+40	5. Warum jetzt?
+41	
+42	Der Trend zur flexiblen Arbeit ("Side Hustle") ist ungebrochen und die Digitalisierung des Mittelstands beschleunigt sich. Die Nachfrage nach schnellen, budgetfreundlichen digitalen Dienstleistungen ist höher denn je. Flinkly bedient diesen Bedarf mit einem lokal angepassten und vertrauenswürdigen Modell, das die großen, anonymen US-Plattformen in der DACH-Region nicht bieten.

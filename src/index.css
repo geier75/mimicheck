@@ -1,0 +1,283 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* :root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+} */
+
+
+
+@layer base {
+  :root {
+    /* Landing Page Blue Primary Palette (OKLCH) */
+    --background: oklch(1 0 0);
+    --foreground: oklch(0.235 0.015 65);
+
+    --card: oklch(1 0 0);
+    --card-foreground: oklch(0.235 0.015 65);
+
+    --popover: oklch(1 0 0);
+    --popover-foreground: oklch(0.235 0.015 65);
+
+    --primary: oklch(0.5 0.22 260);
+    /* Blue 700 */
+    --primary-foreground: oklch(0.97 0.03 260);
+
+    --secondary: oklch(0.98 0.001 286.375);
+    --secondary-foreground: oklch(0.4 0.015 65);
+
+    --muted: oklch(0.967 0.001 286.375);
+    --muted-foreground: oklch(0.552 0.016 285.938);
+
+    --accent: oklch(0.967 0.001 286.375);
+    --accent-foreground: oklch(0.141 0.005 285.823);
+
+    --destructive: oklch(0.577 0.245 27.325);
+    --destructive-foreground: oklch(0.985 0 0);
+
+    --border: oklch(0.92 0.004 286.32);
+    --input: oklch(0.92 0.004 286.32);
+    --ring: oklch(0.623 0.214 259.815);
+
+    --radius: 0.65rem;
+
+    /* Chart Colors */
+    --chart-1: oklch(0.696 0.17 162.48);
+    /* Emerald 500 */
+    --chart-2: oklch(0.527 0.154 183.129);
+    /* Teal 600 */
+    --chart-3: oklch(0.446 0.13 203.43);
+    /* Cyan 700 */
+    --chart-4: oklch(0.401 0.123 216.05);
+    /* Blue 700 */
+    --chart-5: oklch(0.367 0.119 236.46);
+    /* Indigo 700 */
+
+    --sidebar-background: oklch(0.985 0 0);
+    --sidebar-foreground: oklch(0.235 0.015 65);
+    --sidebar-primary: oklch(0.527 0.154 183.129);
+    --sidebar-primary-foreground: oklch(0.985 0 0);
+    --sidebar-accent: oklch(0.967 0.001 286.375);
+    --sidebar-accent-foreground: oklch(0.235 0.015 65);
+    --sidebar-border: oklch(0.92 0.004 286.32);
+    --sidebar-ring: oklch(0.623 0.214 259.815);
+  }
+
+  .dark {
+    /* Landing Page Dark Mode (OKLCH) */
+    --background: oklch(0.141 0.005 285.823);
+
+    --card: oklch(0.21 0.006 285.885);
+    /* Slate 900 */
+    --card-foreground: oklch(0.985 0 0);
+
+    --popover: oklch(0.21 0.006 285.885);
+    --popover-foreground: oklch(0.985 0 0);
+
+    --primary: oklch(0.696 0.17 162.48);
+    /* Emerald 500 for Dark Mode */
+    --primary-foreground: oklch(0.141 0.005 285.823);
+
+    --secondary: oklch(0.274 0.006 286.033);
+    --secondary-foreground: oklch(0.985 0 0);
+
+    --muted: oklch(0.274 0.006 286.033);
+    --muted-foreground: oklch(0.705 0.015 286.067);
+
+    --accent: oklch(0.274 0.006 286.033);
+    --accent-foreground: oklch(0.985 0 0);
+
+    --destructive: oklch(0.577 0.245 27.325);
+    --destructive-foreground: oklch(0.985 0 0);
+
+    --border: oklch(0.274 0.006 286.033);
+    --input: oklch(0.274 0.006 286.033);
+    --ring: oklch(0.446 0.13 203.43);
+
+    --chart-1: oklch(0.696 0.17 162.48);
+    --chart-2: oklch(0.527 0.154 183.129);
+    --chart-3: oklch(0.446 0.13 203.43);
+    --chart-4: oklch(0.401 0.123 216.05);
+    --chart-5: oklch(0.367 0.119 236.46);
+
+    --sidebar-background: oklch(0.21 0.006 285.885);
+    --sidebar-foreground: oklch(0.985 0 0);
+    --sidebar-primary: oklch(0.696 0.17 162.48);
+    --sidebar-primary-foreground: oklch(0.141 0.005 285.823);
+    --sidebar-accent: oklch(0.274 0.006 286.033);
+    --sidebar-accent-foreground: oklch(0.985 0 0);
+    --sidebar-border: oklch(0.274 0.006 286.033);
+    --sidebar-ring: oklch(0.446 0.13 203.43);
+  }
+}
+
+
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════ */
+/* MIMICHECK PROFIL - OPTIMIERTE STYLES */
+/* ═══════════════════════════════════════════════════════════════════ */
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(6, 182, 212, 0.3);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(6, 182, 212, 0.5);
+}
+
+/* Smooth transitions */
+.nav-item {
+  transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+  transform: translateX(4px);
+}
+
+.nav-item.active {
+  background: linear-gradient(90deg, rgba(6, 182, 212, 0.15), rgba(20, 184, 166, 0.1));
+}
+
+/* Content fade in */
+.content-section {
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Input focus glow */
+input:focus,
+select:focus,
+textarea:focus {
+  box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.15);
+}
+
+/* Progress bar shimmer */
+.progress-bar {
+  background: linear-gradient(90deg, #06b6d4, #14b8a6, #10b981);
+  background-size: 200% 100%;
+  animation: shimmer 2s ease infinite;
+}
+
+@keyframes shimmer {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Save button pulse */
+.save-btn:not(:disabled):hover {
+  box-shadow: 0 0 30px rgba(6, 182, 212, 0.4);
+}
+
+/* Hide scrollbar but keep functionality */
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}

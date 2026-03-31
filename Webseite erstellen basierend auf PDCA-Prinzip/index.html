@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <!-- Character Encoding & Viewport -->
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=5"
+    />
+    
+    <!-- Primary Meta Tags -->
+    <title>%VITE_APP_TITLE% - Marktplatz für digitale Mikrodienstleistungen</title>
+    <meta name="title" content="%VITE_APP_TITLE% - Marktplatz für digitale Mikrodienstleistungen" />
+    <meta name="description" content="Flinkly ist der Marktplatz für schnelle, kreative und digitale Mikrodienstleistungen in der DACH-Region. Vertrauen, Einfachheit, Rechtssicherheit. Jetzt kostenlos registrieren!" />
+    <meta name="keywords" content="Freelancer, Gigs, Mikrodienstleistungen, Design, Marketing, Entwicklung, DACH, Deutschland, Österreich, Schweiz" />
+    <meta name="author" content="Flinkly" />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="German" />
+    <meta name="revisit-after" content="7 days" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://flinkly.manus.space/" />
+    <meta property="og:title" content="%VITE_APP_TITLE% - Marktplatz für digitale Mikrodienstleistungen" />
+    <meta property="og:description" content="Flinkly ist der Marktplatz für schnelle, kreative und digitale Mikrodienstleistungen in der DACH-Region. Vertrauen, Einfachheit, Rechtssicherheit." />
+    <meta property="og:image" content="%VITE_APP_LOGO%" />
+    <meta property="og:site_name" content="Flinkly" />
+    <meta property="og:locale" content="de_DE" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://flinkly.manus.space/" />
+    <meta property="twitter:title" content="%VITE_APP_TITLE% - Marktplatz für digitale Mikrodienstleistungen" />
+    <meta property="twitter:description" content="Flinkly ist der Marktplatz für schnelle, kreative und digitale Mikrodienstleistungen in der DACH-Region." />
+    <meta property="twitter:image" content="%VITE_APP_LOGO%" />
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" href="%VITE_APP_LOGO%" />
+    <link rel="apple-touch-icon" href="%VITE_APP_LOGO%" />
+    <link rel="canonical" href="https://flinkly.manus.space/" />
+    
+    <!-- Preconnect to External Resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- JSON-LD Schema Markup - Website -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Flinkly",
+      "description": "Marktplatz für digitale Mikrodienstleistungen in der DACH-Region",
+      "url": "https://flinkly.manus.space/",
+      "logo": "%VITE_APP_LOGO%",
+      "sameAs": [
+        "https://www.facebook.com/flinkly",
+        "https://www.instagram.com/flinkly",
+        "https://www.linkedin.com/company/flinkly"
+      ],
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://flinkly.manus.space/marketplace?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+    
+    <!-- JSON-LD Schema Markup - Organization -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Flinkly",
+      "url": "https://flinkly.manus.space/",
+      "logo": "%VITE_APP_LOGO%",
+      "description": "Marktplatz für digitale Mikrodienstleistungen in der DACH-Region",
+      "areaServed": ["DE", "AT", "CH"],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "Customer Support",
+        "email": "support@flinkly.de"
+      }
+    }
+    </script>
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    <script
+      defer
+      src="%VITE_ANALYTICS_ENDPOINT%/umami"
+      data-website-id="%VITE_ANALYTICS_WEBSITE_ID%"
+    ></script>
+  </body>
+</html>
+

@@ -1,0 +1,38 @@
+# Flinkly Robots.txt - SEO Configuration
+# Allow all search engines to crawl the site
+
+User-agent: *
+Allow: /
+Allow: /marketplace
+Allow: /gig/
+Allow: /dashboard
+Allow: /seller/
+
+# Disallow private/admin areas
+Disallow: /admin/
+Disallow: /api/
+Disallow: /oauth/
+Disallow: /auth/
+
+# Crawl delay for all bots
+Crawl-delay: 1
+
+# Sitemap location
+Sitemap: https://flinkly.manus.space/sitemap.xml
+
+# Specific rules for Google
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+# Specific rules for Bing
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Block bad bots
+User-agent: AhrefsBot
+User-agent: SemrushBot
+User-agent: DotBot
+Disallow: /
+

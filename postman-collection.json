@@ -1,0 +1,150 @@
+{
+  "info": {
+    "name": "MiMiCheck API Local",
+    "description": "Sprint 1 API Endpoints für lokales Testing",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "version": "1.0.0"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8000",
+      "type": "string"
+    },
+    {
+      "key": "abrechnungId",
+      "value": "abr_123456",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/health",
+          "host": ["{{baseUrl}}"],
+          "path": ["health"]
+        },
+        "description": "Prüft ob Backend läuft"
+      },
+      "response": []
+    },
+    {
+      "name": "Upload File",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const jsonData = pm.response.json();",
+              "if (jsonData.abrechnung_id) {",
+              "    pm.collectionVariables.set('abrechnungId', jsonData.abrechnung_id);",
+              "    console.log('Saved abrechnung_id:', jsonData.abrechnung_id);",
+              "}"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "file",
+              "type": "file",
+              "src": "test.pdf",
+              "description": "PDF oder Bilddatei der Nebenkostenabrechnung"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/upload",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "upload"]
+        },
+        "description": "Lädt eine Abrechnung hoch"
+      },
+      "response": []
+    },
+    {
+      "name": "Analyze Abrechnung",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"abrechnung_id\": \"{{abrechnungId}}\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/analyze",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "analyze"]
+        },
+        "description": "Analysiert eine hochgeladene Abrechnung"
+      },
+      "response": []
+    },
+    {
+      "name": "Get Report",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/report/{{abrechnungId}}",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "report", "{{abrechnungId}}"]
+        },
+        "description": "Holt den generierten Bericht"
+      },
+      "response": []
+    },
+    {
+      "name": "Create Checkout Session",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"plan\": \"basic\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/billing/checkout",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "billing", "checkout"]
+        },
+        "description": "Erstellt Stripe Checkout-Session"
+      },
+      "response": []
+    },
+    {
+      "name": "Get Billing Portal",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/billing/portal",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "billing", "portal"]
+        },
+        "description": "Holt Billing Portal URL"
+      },
+      "response": []
+    }
+  ]
+}

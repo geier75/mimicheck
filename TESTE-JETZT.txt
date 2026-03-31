@@ -1,0 +1,76 @@
+═══════════════════════════════════════════════════════════
+🚀 TESTE DEN AUTH-FLOW JETZT!
+═══════════════════════════════════════════════════════════
+
+✅ FIX WURDE ANGEWENDET!
+✅ SERVER LAUFEN!
+
+═══════════════════════════════════════════════════════════
+
+📋 SCHRITT-FÜR-SCHRITT:
+
+1. Kopiere diese URL:
+   
+   http://localhost:3000/landing#auth
+
+2. Öffne einen NEUEN Inkognito-Tab
+   (Cmd + Shift + N oder Ctrl + Shift + N)
+
+3. Füge die URL ein und drücke Enter
+
+4. Öffne Browser DevTools:
+   Drücke F12 oder Cmd + Option + I
+
+5. Gehe zum Tab "Console"
+
+6. Fülle das Formular aus:
+   Email: test@example.com
+   Passwort: Test123456!
+
+7. Klicke "Registrieren" (neuer User) 
+   ODER "Anmelden" (bestehender User)
+
+8. BEOBACHTE was passiert:
+
+   ✅ Console sollte zeigen:
+      🔐 AUTH START
+      📝 Attempting signup/login...
+      🎫 Tokens: { hasAccess: true, hasRefresh: true }
+      🏃 Redirecting NOW!
+
+   ✅ URL sollte wechseln von:
+      http://localhost:3000/landing#auth
+      → http://localhost:8005/auth-bridge?access_token=...
+      → http://localhost:8005/onboarding
+
+   ✅ Du bist eingeloggt auf Port 8005!
+
+═══════════════════════════════════════════════════════════
+
+❓ FALLS "Invalid login credentials":
+
+→ User ist nicht verifiziert!
+
+Öffne: https://supabase.com/dashboard/project/yjjauvmjyhlxcoumwqlj/sql
+
+Führe aus:
+UPDATE auth.users 
+SET email_confirmed_at = NOW()
+WHERE email_confirmed_at IS NULL;
+
+Dann teste erneut!
+
+═══════════════════════════════════════════════════════════
+
+🎯 ERWARTETER FLOW:
+
+Port 3000 (Anmelden) → Port 8005/auth-bridge → Port 8005/onboarding
+
+NICHT: Port 8005 → Port 3000 → Port 3000 (bleibt hängen)
+
+═══════════════════════════════════════════════════════════
+
+✅ START HIER: http://localhost:3000/landing#auth
+❌ NICHT HIER: http://localhost:8005/
+
+═══════════════════════════════════════════════════════════

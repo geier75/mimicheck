@@ -1,0 +1,123 @@
+Text file: pasted_content_3.txt
+Latest content with line numbers:
+1	Interface-Flow für Flinkly, konkret genug für Design & Dev-Handover. Fokus: minimale Klickpfade, glasklare Zustände, mobile-first.
+2	Leitprinzipien (UI)
+3	Produktisierte Gigs: Kauf wie bei E-Commerce (Card → PDP → Checkout).
+4	Transparente Zustände: jeder Screen hat klaren Primary-CTA und Statuschips (Entwurf, In Arbeit, Vorschau, Prüfung, Abnahme).
+5	Trust sichtbar: On-time-Rate, First-Pass-Rate, Dispute-Quote direkt an Cards/PDP.
+6	DACH-Compliance by design: AVV-Hinweis an relevanten Stellen, Kleinunternehmer-Hinweis in Checkout/Invoice.
+7	Informationsarchitektur (Top-Level)
+8	Public: Home, Kategorien (SERP), Gig-Detail (PDP), Hilfe/Legal.
+9	Buyer-App: Meine Aufträge, Auftrag (Room), Rechnungen, Profil/Unternehmen.
+10	Seller-App: Dashboard, Aufträge (Kanban), Gigs, Auszahlungen, Profil/Verifizierung.
+11	Admin: Moderation, Mediation, Katalog, Finance/Reports.
+12	Navigationsmodell
+13	Global Header: Logo | Kategorien | Suche | „Anmelden“ | CTA „Gig anbieten“
+14	Context Tabs (je nach Rolle): Buyer: Aufträge, Rechnungen | Seller: Aufträge, Gigs, Auszahlungen
+15	Sticky Action Bar (mobil): Home, Suchen, Aufträge, Nachrichten, Profil
+16	Buyer-Interface-Flow
+17	1) Home / Discovery
+18	Ziel: In ≤10 s zu relevanten Gigs.
+19	Komponenten: Hero, Suchleiste, Kategorie-Chips, „Empfohlen für dich“ (leer → Bestseller), Trust-Badges.
+20	Aktionen: Suche (Enter), Filter öffnen (Drawer), Kategorie wählen (Chips).
+21	State-UI
+22	Empty-State: „Gib ein Ziel ein (z. B. ‘Logo-Refresh’).“
+23	Loading-State: Skeleton Cards (3–6).
+24	Error-State: Inline-Hinweis + Retry.
+25	2) SERP (Kategorien/Suche)
+26	Oben: Chips (Preis ≤ 250 €, Lieferzeit, Bewertungen, „Verified DACH“).
+27	Karten: Titel, Fixpreis, ETA, Metriken, Anbieter-Badge.
+28	CTA in Card: „Details“ + Quick-CTA „Jetzt beauftragen“.
+29	Interaktionen
+30	Filter-Drawer (mobil), Sort (Relevanz/On-time).
+31	Pagination: „Mehr laden“.
+32	3) PDP / Gig-Detail
+33	Above the fold: Titel, Preis, Lieferzeit, „Was du bekommst“, „Nicht enthalten“.
+34	Sektion: Beispiele (Gallery), Briefing-Felder (Preview), Anbieter-Profil (Badges), Reviews.
+35	Side/Sticky: Primär-CTA „In 3 Klicks beauftragen“; Sekundär: „Frage stellen“.
+36	Trust-Elemente
+37	Chips: On-time-%, First-Pass-Rate, Dispute-Quote.
+38	DSGVO-Hinweis + AVV-Info (wenn personenbezogene Daten).
+39	4) Checkout (3 Schritte)
+40	Briefing: dynamische Pflichtfelder, Uploads, Validierung (Blocking).
+41	Zahlung (Escrow): SEPA/Klarna/Sofort/TWINT; Escrow-Erklärung (Inline Tooltip).
+42	Recht & Rechnung: Unternehmensdaten, Kleinunternehmer-Hinweis, optional AVV-Generator (1-Click).
+43	Completion
+44	Confirmation Screen mit ETA, Statuschip „In Arbeit“, Link: „Zum Auftrags-Room“.
+45	5) Auftrags-Room (Job Chat + Status)
+46	Header: Gig-Titel, Statuschip, ETA-Timer.
+47	Tabs: Aktivität (Chat, Updates), Lieferungen (Previews/Finals), Briefing (Read-only), Rechnung & AVV.
+48	Sticky Bottom Bar: Eingabefeld + Quick-Actions (Revision anfragen, Abnahme, Eskalation).
+49	Zustandswechsel (Buyer)
+50	Vorschau eingetroffen → Button „Prüfen“.
+51	Prüfen → „Abnehmen“ (Freigabe) | „Revision anfragen (x/y)“ | „Eskalation“.
+52	Abnahme → Erfolg, Download Final, Rechnung.
+53	Seller-Interface-Flow
+54	1) Onboarding
+55	Stepper: Account → Verifizierung (ID/KYC) → Steuern (Kleinunternehmer-Flag) → Auszahlungsart (SEPA) → Portfolio.
+56	Abschluss: Guidelines (SLA, Revisions-Cap) mit Checkbox.
+57	2) Gig-Wizard (Produktisierung)
+58	Tabs: Basics (Titel, Kategorie), Leistung (Checkliste Deliverables, „Nicht enthalten“), Zeiten/Revisionen, Beispiele, Preis (≤ 250 €), Briefing-Felder (Form-Builder).
+59	Preview: PDP-Vorschau in Echtzeit.
+60	Publish: Status „Entwurf“ → „Live (geprüft)“ (Admin-Gate optional).
+61	3) Aufträge (Kanban)
+62	Spalten: Neu → In Arbeit → Vorschau → Revision → Abnahme.
+63	Karte zeigt: Frist (ETA), Buyer-Name, Kurzbriefing, SLA-Reminder („Update fällig in 6 Std“).
+64	Aktion: „Update posten“, „Vorschau liefern“, „Final liefern“.
+65	4) Lieferung
+66	Upload: Vorschau (wasserzeichen), Final (signiert).
+67	Checklisten-Abgleich: Muss-Häkchen je Deliverable (grün/rot).
+68	Nach Abnahme: Auto-Auszahlung (Escrow-Release) + Gutschrift/Rechnung.
+69	5) Health-Dashboard
+70	KPI-Karten: On-time-Rate, First-Pass-Rate, Dispute-Quote, Response-Time.
+71	Hinweis-Module: „Diese Metrik senkt dein Ranking – Vorschlag: Lieferzeit +12 h oder Scope schärfen.“
+72	Dispute/Mediation UI (beidseitig)
+73	Start: Button „Eskalation“ → Mini-Wizard (Beleg, gewünschtes Ergebnis).
+74	Phase 1 (Soft): Moderations-Thread mit vorgeschlagenen Lösungen (Buttons).
+75	Phase 2 (Expert-Review): Statuschip „Review läuft“, ETA ≤ 72 h, Belegliste.
+76	Outcome: System-Banner mit Entscheidung, automatische Finanzaktionen.
+77	Admin-Interface (Kurz)
+78	Moderation: Flagged Content, KYC-Status, Policy-Verstöße.
+79	Mediation: Queue, Belege, Entscheidungsvorlagen.
+80	Katalog: Kategorien, Editor’s Picks, Badge-Zuteilung.
+81	Finance: Escrow-Ledger, Auszahlungsbatches, Gebühren-Reports.
+82	State Machine (Order) – komprimiert
+83	IDLE -> CHECKOUT_CREATED -> FUNDS_IN_ESCROW -> IN_PROGRESS
+84	IN_PROGRESS -> PREVIEW_DELIVERED -> IN_REVIEW
+85	IN_REVIEW -> APPROVED -> PAID_OUT
+86	IN_REVIEW -> REVISION_REQUESTED -> IN_PROGRESS
+87	IN_REVIEW -> DISPUTED -> MEDIATION -> (APPROVED | PARTIAL_REFUND | FULL_REFUND)
+88	Flow (Mermaid, Buyer bis Payout)
+89	flowchart TD
+90	A[Home] --> B[SERP/Kategorie]
+91	B --> C[PDP/Gig-Detail]
+92	C --> D[Checkout: Briefing]
+93	D --> E[Checkout: Zahlung (Escrow)]
+94	E --> F[Checkout: Recht/Rechnung]
+95	F --> G[Auftrags-Room]
+96	G -->|Vorschau erhalten| H[Prüfung]
+97	H -->|Abnahme| I[Escrow Release & Download]
+98	H -->|Revision| G
+99	H -->|Eskalation| J[Mediation]
+100	J -->|Entscheidung| I
+101	Screen-Inventory (Minimum)
+102	Public: Home, SERP, PDP, Checkout(1–3), Confirmation
+103	Buyer: Aufträge-Liste, Auftrags-Room (Aktivität, Lieferungen, Briefing, Rechnungen), Profil
+104	Seller: Dashboard, Aufträge-Kanban, Gig-Wizard, Gig-Liste, Auszahlungen, Profil/Verifizierung
+105	Admin: Moderation, Mediation, Katalog, Finance
+106	Komponentenbibliothek (entscheidend für Speed)
+107	Atoms: Chips (Status/Filter), KPI-Badge, Countdown, Progress-Stepper, Inline-Tooltip (Escrow/AVV).
+108	Molecules: Gig-Card, Review-Card, Briefing-Form (Schema-getrieben), Payment-Widget, Delivery-Block (Preview/Final).
+109	Organisms: SERP-Grid, PDP-Hero, Checkout-Stepper, Kanban-Board, Order-Room-Timeline, Mediation-Wizard.
+110	Edge-Cases & Safeties
+111	Unvollständiges Briefing: Blocking mit Beispiel-Guides.
+112	Overdue: Roter ETA-Chip + „Kulanz-Button“ (kostenloses Express-Upgrade).
+113	Personenbezogene Daten ohne AVV: Upload blockiert, CTA „AVV jetzt erstellen“.
+114	Storno-Fraud: Rule-Banner, Limitierungen (z. B. wiederholte 24h-Stornos).
+115	Telemetrie (UI-Events)
+116	search_view, filter_apply, gig_view, pdp_scroll_depth, checkout_start, brief_valid, escrow_fund, room_first_message, preview_open, approve_click, revision_click, dispute_open, payout_success.
+117	Designsystem – schnelle Guidelines
+118	Mobile-first, 8-pt Grid, max. 2 Primärfarben.
+119	Kontrast AA, Fokus-Ringe sichtbar.
+120	Deutliche CTAs: Primary (solid), Secondary (ghost), Destruktiv (danger).
+121	Listen priorisieren: Cards mit 3 Kernkennzahlen + 1 CTA.

@@ -1,0 +1,25 @@
+# Requirements für Universal Forms API
+# PDF Extraction & Filling
+
+# Core Dependencies (bereits vorhanden)
+fastapi>=0.104.0
+uvicorn[standard]>=0.24.0
+python-multipart>=0.0.6
+python-dotenv>=1.0.0
+
+# PDF Processing
+pdfminer.six>=20221105     # Digital PDF text extraction
+pdfrw>=0.4                 # AcroForm read/write
+pdfplumber>=0.10.0         # Enhanced PDF parsing
+pikepdf>=8.0.0             # Alternative PDF manipulation
+
+# OCR (Optional - nur wenn Scans unterstützt werden sollen)
+pytesseract>=0.3.10        # OCR engine wrapper
+Pillow>=10.0.0             # Image processing
+
+# HTML to PDF
+weasyprint>=60.0           # HTML → PDF converter
+jinja2>=3.1.2              # Template engine
+
+# Utilities
+python-dateutil>=2.8.2     # Date parsing

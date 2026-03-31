@@ -1,0 +1,60 @@
+
+[functions.health]
+enabled = true
+verify_jwt = true
+import_map = "./functions/health/deno.json"
+# Uncomment to specify a custom file path to the entrypoint.
+# Supported file extensions are: .ts, .js, .mjs, .jsx, .tsx
+entrypoint = "./functions/health/index.ts"
+# Specifies static files to be bundled with the function. Supports glob patterns.
+# For example, if you want to serve static HTML pages in your function:
+# static_files = [ "./functions/health/*.html" ]
+
+[functions.contact-submit]
+enabled = true
+verify_jwt = true
+import_map = "./functions/contact-submit/deno.json"
+# Uncomment to specify a custom file path to the entrypoint.
+# Supported file extensions are: .ts, .js, .mjs, .jsx, .tsx
+entrypoint = "./functions/contact-submit/index.ts"
+# Specifies static files to be bundled with the function. Supports glob patterns.
+# For example, if you want to serve static HTML pages in your function:
+# static_files = [ "./functions/contact-submit/*.html" ]
+
+[functions.analyze-eligibility]
+enabled = true
+verify_jwt = true
+# Uncomment to specify a custom file path to the entrypoint.
+# Supported file extensions are: .ts, .js, .mjs, .jsx, .tsx
+entrypoint = "./functions/analyze-eligibility/index.ts"
+
+[functions.find-antraege]
+verify_jwt = true
+
+[functions.autofill-antrag]
+verify_jwt = true
+
+[functions.process-pdf]
+verify_jwt = true
+
+[functions.analyze-nebenkosten]
+verify_jwt = true
+
+[auth]
+# Enable signup for local development
+enable_signup = true
+site_url = "http://localhost:8005"
+additional_redirect_urls = ["http://localhost:3000"]
+
+[auth.email]
+# Disable email confirmations for local development
+enable_signup = true
+enable_confirmations = false
+
+# Email templates - using Supabase defaults
+
+# External OAuth providers (optional)
+[auth.external.google]
+enabled = false
+client_id = ""
+secret = ""

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supabase 400 Error Debug</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #000;
+            color: #fff;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        .container { max-width: 800px; margin: 0 auto; }
+        h1 { margin-bottom: 20px; color: #00ff88; }
+        .section {
+            background: #111;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .section h2 { margin-bottom: 15px; color: #00aaff; font-size: 18px; }
+        .form-group { margin-bottom: 15px; }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #aaa;
+            font-size: 14px;
+        }
+        input, button {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #333;
+            border-radius: 6px;
+            background: #222;
+            color: #fff;
+            font-size: 16px;
+        }
+        input:focus {
+            outline: none;
+            border-color: #00aaff;
+        }
+        button {
+            background: #00aaff;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        button:hover { background: #0088cc; }
+        button:disabled {
+            background: #555;
+            cursor: not-allowed;
+        }
+        #log {
+            background: #000;
+            border: 1px solid #333;
+            border-radius: 6px;
+            padding: 15px;
+            font-family: 'Monaco', 'Courier New', monospace;
+            font-size: 13px;
+            max-height: 400px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .success { color: #00ff88; }
+        .error { color: #ff4444; }
+        .warning { color: #ffaa00; }
+        .info { color: #00aaff; }
+        .timestamp { color: #666; font-size: 11px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🐛 Supabase 400 Error Debugger</h1>
+        
+        <div class="section">
+            <h2>📝 Test Registrierung (Signup)</h2>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" id="signupEmail" value="debug-test@example.com" placeholder="test@example.com">
+            </div>
+            <div class="form-group">
+                <label>Passwort (min. 8 Zeichen)</label>
+                <input type="password" id="signupPassword" value="Test123456!" placeholder="Min. 8 Zeichen">
+            </div>
+            <button id="signupBtn">Registrieren & Debuggen</button>
+        </div>
+
+        <div class="section">
+            <h2>🔑 Test Login</h2>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" id="loginEmail" value="debug-test@example.com" placeholder="test@example.com">
+            </div>
+            <div class="form-group">
+                <label>Passwort</label>
+                <input type="password" id="loginPassword" value="Test123456!" placeholder="Passwort">
+            </div>
+            <button id="loginBtn">Login & Debuggen</button>
+        </div>
+
+        <div class="section">
+            <h2>📊 Console Log</h2>
+            <div id="log"></div>
+        </div>
+    </div>
+
+    <script>
+        // Supabase Config - Updated with CORRECT key from .env
+        const SUPABASE_URL = 'https://yjjauvmjyhlxcoumwqlj.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlqamF1dm1qeWhseGNvdW13cWxqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjI0Mzc4NzgsImV4cCI6MjA3ODAxMzg3OH0.A8e7YwJA6VJ0fTJJt8TBVRT4vktVxB1DFL8U5RLTzZg';
+
+        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        const logDiv = document.getElementById('log');
+
+        function log(message, type = 'info') {
+            const timestamp = new Date().toLocaleTimeString('de-DE');
+            const line = document.createElement('div');
+            line.className = type;
+            line.innerHTML = `<span class="timestamp">[${timestamp}]</span> ${message}`;
+            logDiv.appendChild(line);
+            logDiv.scrollTop = logDiv.scrollHeight;
+            console.log(message);
+        }
+
+        function clearLog() {
+            logDiv.innerHTML = '';
+        }
+
+        // Signup Handler
+        document.getElementById('signupBtn').addEventListener('click', async () => {
+            clearLog();
+            const email = document.getElementById('signupEmail').value;
+            const password = document.getElementById('signupPassword').value;
+            const btn = document.getElementById('signupBtn');
+
+            log('🚀 SIGNUP TEST GESTARTET', 'info');
+            log(`📧 Email: ${email}`, 'info');
+            log(`🔒 Passwort Länge: ${password.length} Zeichen`, 'info');
+            log('', 'info');
+
+            btn.disabled = true;
+            btn.textContent = 'Läuft...';
+
+            try {
+                log('📡 Sende Signup Request zu Supabase...', 'info');
+                
+                const { data, error } = await supabase.auth.signUp({
+                    email: email,
+                    password: password,
+                    options: {
+                        data: {
+                            name: 'Debug Test User'
+                        }
+                    }
+                });
+
+                log('', 'info');
+                log('📦 RESPONSE EMPFANGEN:', 'info');
+                log('─────────────────────────────────────────', 'info');
+
+                if (error) {
+                    log('❌ ERROR:', 'error');
+                    log(`   Message: ${error.message}`, 'error');
+                    log(`   Status: ${error.status || 'Unbekannt'}`, 'error');
+                    log(`   Details: ${JSON.stringify(error, null, 2)}`, 'error');
+                    log('', 'error');
+
+                    // Interpretiere den Fehler
+                    if (error.message.includes('already registered')) {
+                        log('💡 LÖSUNG: User existiert bereits!', 'warning');
+                        log('   → Verwende eine andere Email', 'warning');
+                        log('   → ODER versuche Login statt Signup', 'warning');
+                    } else if (error.message.includes('Email')) {
+                        log('💡 LÖSUNG: Email-Problem!', 'warning');
+                        log('   → Prüfe Email-Format', 'warning');
+                        log('   → Verwende einfache Email wie test@example.com', 'warning');
+                    } else if (error.message.includes('password')) {
+                        log('💡 LÖSUNG: Passwort-Problem!', 'warning');
+                        log('   → Mindestens 8 Zeichen erforderlich', 'warning');
+                        log('   → Verwende: Test123456!', 'warning');
+                    } else if (error.message.includes('confirm') || error.message.includes('email not confirmed')) {
+                        log('💡 LÖSUNG: Email-Bestätigung ist AN!', 'warning');
+                        log('   → Gehe zu Supabase Dashboard', 'warning');
+                        log('   → Auth → Providers → Email', 'warning');
+                        log('   → "Confirm email" → AUS schalten', 'warning');
+                    } else if (error.status === 400) {
+                        log('💡 HTTP 400 Bad Request', 'warning');
+                        log('   → Anfrage wird von Supabase abgelehnt', 'warning');
+                        log('   → Siehe Error Message oben für Details', 'warning');
+                    }
+                } else {
+                    log('✅ SIGNUP ERFOLGREICH!', 'success');
+                    log('', 'success');
+                    log(`👤 User ID: ${data.user?.id}`, 'success');
+                    log(`📧 Email: ${data.user?.email}`, 'success');
+                    log(`📅 Created: ${data.user?.created_at}`, 'success');
+                    log('', 'success');
+
+                    if (data.session) {
+                        log('✅ SESSION ERSTELLT!', 'success');
+                        log(`🎫 Access Token: ${data.session.access_token.substring(0, 30)}...`, 'success');
+                        log('', 'success');
+                        log('🎉 PERFEKT! Der Flow sollte funktionieren!', 'success');
+                    } else {
+                        log('⚠️ KEIN SESSION!', 'warning');
+                        log('   → Wahrscheinlich: Email-Bestätigung erforderlich', 'warning');
+                        log('   → User wurde erstellt, aber nicht automatisch eingeloggt', 'warning');
+                        log('', 'warning');
+                        log('💡 LÖSUNG:', 'warning');
+                        log('   1. Gehe zu Supabase Dashboard', 'warning');
+                        log('   2. Auth → Providers → Email', 'warning');
+                        log('   3. "Confirm email" → AUS schalten', 'warning');
+                        log('   4. Teste mit NEUEM User', 'warning');
+                    }
+                }
+
+            } catch (err) {
+                log('❌ UNERWARTETER FEHLER:', 'error');
+                log(JSON.stringify(err, null, 2), 'error');
+            } finally {
+                btn.disabled = false;
+                btn.textContent = 'Registrieren & Debuggen';
+            }
+        });
+
+        // Login Handler
+        document.getElementById('loginBtn').addEventListener('click', async () => {
+            clearLog();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            const btn = document.getElementById('loginBtn');
+
+            log('🚀 LOGIN TEST GESTARTET', 'info');
+            log(`📧 Email: ${email}`, 'info');
+            log('', 'info');
+
+            btn.disabled = true;
+            btn.textContent = 'Läuft...';
+
+            try {
+                log('📡 Sende Login Request zu Supabase...', 'info');
+                
+                const { data, error } = await supabase.auth.signInWithPassword({
+                    email: email,
+                    password: password
+                });
+
+                log('', 'info');
+                log('📦 RESPONSE EMPFANGEN:', 'info');
+                log('─────────────────────────────────────────', 'info');
+
+                if (error) {
+                    log('❌ ERROR:', 'error');
+                    log(`   Message: ${error.message}`, 'error');
+                    log(`   Status: ${error.status || 'Unbekannt'}`, 'error');
+                    log('', 'error');
+
+                    if (error.message.includes('Invalid login credentials')) {
+                        log('💡 LÖSUNG: Ungültige Credentials!', 'warning');
+                        log('   Mögliche Ursachen:', 'warning');
+                        log('   1. User existiert nicht → Verwende Signup statt Login', 'warning');
+                        log('   2. Falsches Passwort → Prüfe Passwort', 'warning');
+                        log('   3. Email nicht bestätigt → User verifizieren', 'warning');
+                        log('', 'warning');
+                        log('🔧 SCHNELLE LÖSUNG:', 'warning');
+                        log('   Öffne: https://supabase.com/dashboard/project/yjjauvmjyhlxcoumwqlj/sql', 'warning');
+                        log('   Führe aus:', 'warning');
+                        log('   UPDATE auth.users SET email_confirmed_at = NOW()', 'warning');
+                        log('   WHERE email_confirmed_at IS NULL;', 'warning');
+                    } else if (error.status === 400) {
+                        log('💡 HTTP 400 Bad Request', 'warning');
+                        log('   → Siehe Error Message oben', 'warning');
+                    }
+                } else {
+                    log('✅ LOGIN ERFOLGREICH!', 'success');
+                    log('', 'success');
+                    log(`👤 User ID: ${data.user?.id}`, 'success');
+                    log(`📧 Email: ${data.user?.email}`, 'success');
+                    log(`🎫 Access Token: ${data.session?.access_token.substring(0, 30)}...`, 'success');
+                    log('', 'success');
+                    log('🎉 PERFEKT! Auth funktioniert!', 'success');
+                }
+
+            } catch (err) {
+                log('❌ UNERWARTETER FEHLER:', 'error');
+                log(JSON.stringify(err, null, 2), 'error');
+            } finally {
+                btn.disabled = false;
+                btn.textContent = 'Login & Debuggen';
+            }
+        });
+
+        // Initial Log
+        log('✅ Supabase Client initialisiert', 'success');
+        log(`🔗 URL: ${SUPABASE_URL}`, 'info');
+        log(`🔑 Key: ${SUPABASE_ANON_KEY.substring(0, 30)}...`, 'info');
+        log('', 'info');
+        log('📋 BEREIT ZUM TESTEN!', 'success');
+        log('', 'info');
+        log('💡 TIPP: Öffne auch Browser DevTools (F12) → Network Tab', 'warning');
+        log('   → Dann siehst du den genauen HTTP Request/Response', 'warning');
+    </script>
+</body>
+</html>

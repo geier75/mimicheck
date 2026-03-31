@@ -1,0 +1,74 @@
+Text file: pasted_content_2.txt
+Latest content with line numbers:
+1	Userflow für Flinkly – getrennt nach Käufer (Kunde), Verkäufer (Macher) und Admin-Backoffice. Fokus: ≤ 250 € Micro-Gigs, Escrow, DACH-Compliance, Speed.
+2	Käufer-Flow (Kleinunternehmen / Solo / Privat)
+3	Landing → Discovery
+4	Ziel: In ≤ 10 Sek. verstehen & suchen.
+5	Elemente: Hero („Kleine Gigs, große Wirkung“), Top-Use-Cases (Cards), Suchleiste, Kategorien (Logo-Refresh, Social-Bundle, SEO-Fix, UGC-Snippet, GA4-Setup …), Trust-Badges (DSGVO, Escrow, Bewertungen).
+6	Aktionen: Suche (Freitext), Filter (Preis ≤ 250 €, Lieferzeit, Bewertungen, „Verified DACH“), Sortierung (Relevanz, On-time-Rate).
+7	Serp/Kategorie → Gig-Detail
+8	Gig-Card: Titel, Lieferzeit (z. B. 48 h), Fixpreis, „Was du bekommst“, Beispiel-Artefakte, First-Pass-Rate, On-time-% und Dispute-Quote, Anbieter-Badge (ID geprüft / Gewerbe).
+9	CTA: „In 3 Klicks beauftragen“ + „Frage stellen“ (Pre-Briefing Chat, asynchron, kein Bidding).
+10	Recht: Link „AVV-Generator bei personenbezogenen Daten“.
+11	Beauftragen (Checkout)
+12	Step 1: Briefing (strukturierte Felder je Gig-Template; Pflicht-Uploads; klare Scope-Grenzen; Revisions-Cap).
+13	Step 2: Zahlung in Treuhand: SEPA/Klarna/Sofort/TWINT; Escrow-Erklärung (Geld wird erst bei Abnahme freigegeben).
+14	Step 3: Recht (optional): AVV-Generator (1-Click), Rechnungsdaten (Kleinunternehmer-Hinweis auto).
+15	Ergebnis: Auftrag erstellt, Countdown + ETA, Chat-Thread geöffnet.
+16	Bearbeitung
+17	Status: „In Arbeit“ → „Vorschau“ → „Zur Prüfung“.
+18	Benachrichtigungen: Web + E-Mail; SLA-Marker (z. B. T+24 h Updatepflicht).
+19	Zwischenergebnisse: Wasserzeichen-Preview bis Abnahme.
+20	Abnahme
+21	Kunde sieht Abnahmecheckliste (automatisch aus Scope), klickt:
+22	Abnehmen → Escrow frei → Download Final → Rechnung auto.
+23	Revision anfragen (1-x je Paket) → Pflichtfeld Änderungswünsche (Guided).
+24	Eskalation (Dispute) → Kurzer Beleg-Wizard → Mediation startet.
+25	Review & Retention
+26	2-stufige Bewertung: Sterne + Text, dazu Qualitätsmetriken (On-time, First-Pass).
+27	Upsell: „Anschluss-Gig“ (z. B. Social-Bundle → Ad-Varianten).
+28	Trust Loop: Verifizierte Rezension, Badge-Impact sichtbar.
+29	Verkäufer-Flow (Macher)
+30	Onboarding kurz & compliant
+31	Social-Login → Verifizierung (IDnow/ähnlich), Steuerprofil (Kleinunternehmer-Flag), Auszahlungsart (SEPA).
+32	Skill-Tags + Portfolio-Artefakte; Qualitätsregeln kurz (Lieferzeiten, Revisions-Cap, Kommunikations-SLA).
+33	Gig-Erstellung (Produktisiert)
+34	Template-Wizard: Deliverables (Checkliste), Lieferzeit, Revisionsanzahl, Beispiele, klare „Nicht enthalten“-Liste.
+35	Preis: ≤ 250 €; optional Add-ons (z. B. Express +24 h +50 €).
+36	Auto-Briefing: Dynamische Felder, damit Käufer immer vollständige Inputs liefern.
+37	Auftragsabwicklung
+38	Auftrags-Inbox (Kanban): Neu → In Arbeit → Vorschau → Revision → Abnahme.
+39	Pflicht-Update / 24 h-Ping; Templates für Status-Posts.
+40	Lieferung: Vorschau + Final (signierte Artefakte); Checklisten-Abgleich auto.
+41	Auszahlung
+42	Abnahme → Escrow-Release (T+0), Fee-Abzug transparent, Gutschrift + Rechnungs-PDF (rechtssicher).
+43	Health-Dashboard: On-time-%, First-Pass-Rate, Dispute-Quote → wirkt auf Ranking.
+44	Dispute-/Mediation-Flow (beidseitig)
+45	Soft-Mediation (48 h): Plattform-Guidelines, gezielte Fragen, Vorschläge (Teil-Revision vs. Teil-Refund).
+46	Expert-Review (≤ 72 h): unabhängiger Reviewer vergleicht Artefakte mit Scope-Checkliste.
+47	Schiedsspruch: Voll/Teil-Zahlung oder neue Revision; Fee-Handling klar.
+48	Transparenz: Dispute-Quote fließt in öffentliche Metriken (Manipulationsschutz).
+49	Admin-Backoffice (Trust & Liquidity)
+50	Katalogpflege: Starter-Kategorien, Kurations-Badges, „Editor’s Picks“.
+51	Risk/Trust: KYC-Status, Anomalien (zu viele Stornos), Keyword-Filter (Policy/DSGVO).
+52	Compliance: AVV-Archiv, Rechnungs-Export, Umsatzreports (DE/AT/CH).
+53	Economics: Take-Rate, Payment-Fees, Kohorten-NPS, Time-to-First-Gig, Fill-Rate.
+54	Screen-Map (Minimum set, klar strukturiert)
+55	Public: Landing → Kategorie/Serp → Gig-Detail → Checkout (Briefing → Payment → Recht) → Auftrags-Room.
+56	Käufer-App: Meine Aufträge (Status/Chat), Abnahme, Rechnungen, Bewertungen.
+57	Verkäufer-App: Dashboard (Health-KPIs), Aufträge (Kanban), Gig-Manager, Auszahlungen, Profil/Verifizierung.
+58	Admin: Moderation, Mediation, Katalog, Reports.
+59	Microcopy & UX-Guides (entscheidend für Speed)
+60	CTA-Klarheit: „In 3 Klicks beauftragen“, „Revision anfragen (1 von 1)“, „Abnahme & Auszahlung“.
+61	Boundaries sichtbar: „Nicht enthalten“ oberhalb des Fold, damit Disputes sinken.
+62	Zeitwahrheit: ETA-Timer + „Letztes Update vor X Std.“.
+63	Beweise: Beispiel-Artefakte + messbare Qualitätsmetriken, nicht nur Sterne.
+64	Instrumentation (Messpunkte ab Tag 1)
+65	North Stars: Time-to-First-Gig (Käufe) < 24 h, Fulfillment-Rate > 92 %, Dispute < 4 %, NPS ≥ 55.
+66	Events: search_view, filter_apply, gig_view, checkout_start, brief_complete, escrow_fund, first_message, draft_delivery, approval, revision_request, dispute_open, payout_release.
+67	Experiment-Hebel: One-Click-Refills (Folgeauftrag), Express-Add-on, „Empfohlen für dein Briefing“.
+68	Edge-Cases (kurz)
+69	Unvollständiges Briefing → Blocking-Validator + Beispiel-Upload.
+70	Zeit-Overrun → Auto-Notify + Kulanz-Option (Express-Upgrade gratis oder Teil-Refund).
+71	Datenverarbeitung → AVV-Pflicht bei personenbezogenen Daten; ohne AVV kein Upload solcher Daten.
+72	Urheberrecht → Check-Kästchen + Lizenztext je Gig (Nutzungsrechte klar).

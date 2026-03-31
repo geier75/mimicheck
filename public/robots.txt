@@ -1,0 +1,13 @@
+# MimiCheck Robots.txt
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://mimicheck.ai/sitemap.xml
+
+# Geschützte Bereiche
+Disallow: /api/
+Disallow: /dashboard
+Disallow: /profil
+Disallow: /upload
+Disallow: /auth
