@@ -59,8 +59,10 @@ export default function SupabaseDashboard() {
   useEffect(() => {
     if (user) {
       fetchApplications();
+    } else if (!authLoading) {
+      setLoading(false);
     }
-  }, [user]);
+  }, [user, authLoading]);
 
   const fetchApplications = async () => {
     try {

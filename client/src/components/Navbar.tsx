@@ -2,10 +2,12 @@ import { Menu, X } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { APP_LOGO, APP_TITLE } from '@/const';
+import { useSupabaseAuth } from '@/contexts/SupabaseAuthContext';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { user } = useSupabaseAuth();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -56,7 +58,7 @@ export default function Navbar() {
             </a>
 
             <Button asChild>
-              <a href="#auth">Anmelden</a>
+              {user ? <a href="/dashboard">Dashboard</a> : <a href="/auth">Anmelden</a>}
             </Button>
           </div>
 
@@ -93,7 +95,10 @@ export default function Navbar() {
                 Kontakt
               </a>
               <Button asChild className="w-full">
-                <a href="#auth" onClick={() => setIsMobileMenuOpen(false)}>Anmelden</a>
+                {user
+                  ? <a href="/dashboard" onClick={() => setIsMobileMenuOpen(false)}>Dashboard</a>
+                  : <a href="/auth" onClick={() => setIsMobileMenuOpen(false)}>Anmelden</a>
+                }
               </Button>
             </div>
           </div>

@@ -15,90 +15,29 @@ export default function Auth() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('🔐 AUTH START:', { email: formData.email, isLogin });
-    
+
     try {
       if (isLogin) {
-        console.log('🔑 Attempting login...');
-        const { data, error } = await supabase.auth.signInWithPassword({
+        const { error } = await supabase.auth.signInWithPassword({
           email: formData.email,
           password: formData.password,
         });
-        console.log('🔑 Login response:', { data, error });
         if (error) throw error;
       } else {
-        console.log('📝 Attempting signup...');
-        const { data, error } = await supabase.auth.signUp({
+        const { error } = await supabase.auth.signUp({
           email: formData.email,
           password: formData.password,
           options: { data: { name: formData.name || formData.email } },
         });
-        console.log('📝 Signup response:', { data, error });
         if (error) throw error;
       }
 
-      console.log('🔍 Getting session...');
-      const { data: sess, error: sessErr } = await supabase.auth.getSession();
-      console.log('📦 Session:', { sess, sessErr });
-      
-      if (sessErr) throw sessErr;
-      
-      // Main App URL früh deklarieren - HARDCODED FOR NOW
-      const mainUrl = 'http://localhost:8005';
-      console.log('🔧 HARDCODED mainUrl:', mainUrl);
-      
-      const access_token = sess.session?.access_token;
-      const refresh_token = sess.session?.refresh_token as string | undefined;
-      
-      console.log('🎫 Tokens:', { 
-        hasAccess: !!access_token, 
-        hasRefresh: !!refresh_token,
-        accessLength: access_token?.length,
-        refreshLength: refresh_token?.length
-      });
-      
-      if (!access_token || !refresh_token) {
-        console.log('⚠️ Keine Session - versuche erneute Anmeldung...');
-        // Bei neuen Usern dauert es manchmal einen Moment
-        await new Promise(resolve => setTimeout(resolve, 1000));
-        
-        // Nochmal versuchen
-        const { data: retrySession } = await supabase.auth.getSession();
-        if (retrySession.session) {
-          console.log('✅ Session nach Retry gefunden!');
-          const access_token = retrySession.session.access_token;
-          const refresh_token = retrySession.session.refresh_token;
-          
-          const emailParam = encodeURIComponent(formData.email);
-          const nameParam = encodeURIComponent(formData.name || '');
-          const qs = `access_token=${encodeURIComponent(access_token)}&refresh_token=${encodeURIComponent(refresh_token)}&email=${emailParam}&name=${nameParam}`;
-          const redirectUrl = `${mainUrl}/auth-bridge?${qs}`;
-          
-          console.log('🚀 Redirecting after retry...');
-          window.location.href = redirectUrl;
-          return;
-        }
-        
-        throw new Error('Session konnte nicht erstellt werden. Bitte erneut versuchen.');
-      }
-
-      console.log('🚀 Redirect URL:', mainUrl);
-      
       toast.success(isLogin ? 'Anmeldung erfolgreich!' : 'Registrierung erfolgreich!', {
-        description: 'Weiterleitung …'
+        description: 'Weiterleitung zum Dashboard…'
       });
-      
-      const emailParam = encodeURIComponent(formData.email);
-      const nameParam = encodeURIComponent(formData.name || '');
-      const qs = `access_token=${encodeURIComponent(access_token)}&refresh_token=${encodeURIComponent(refresh_token)}&email=${emailParam}&name=${nameParam}`;
-      const redirectUrl = `${mainUrl}/auth-bridge?${qs}`;
-      
-      console.log('🔗 Full redirect URL:', redirectUrl.substring(0, 100) + '...');
-      console.log('🏃 Redirecting NOW!');
-      
-      window.location.href = redirectUrl;
+
+      window.location.href = '/dashboard';
     } catch (err: any) {
-      console.error('❌ Auth error:', err);
       toast.error('Auth fehlgeschlagen', { description: err?.message || String(err) });
     }
   };

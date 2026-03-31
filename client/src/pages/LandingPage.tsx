@@ -46,18 +46,7 @@ export default function LandingPage() {
         }
       }
       
-      const { data, error: sessErr } = await supabase.auth.getSession();
-      if (sessErr) throw sessErr;
-      const access_token = data.session?.access_token;
-      const refresh_token = data.session?.refresh_token as string | undefined;
-      if (!access_token || !refresh_token) {
-        throw new Error('Kein Session-Token verfügbar. Bitte E-Mail bestätigen oder erneut versuchen.');
-      }
-      const emailParam = encodeURIComponent(formData.email);
-      const nameParam = encodeURIComponent(formData.name || '');
-      const qs = `access_token=${encodeURIComponent(access_token)}&refresh_token=${encodeURIComponent(refresh_token)}&email=${emailParam}&name=${nameParam}`;
-      const dest = `${window.location.origin}/auth-bridge?${qs}`;
-      window.location.href = dest;
+      window.location.href = '/dashboard';
     } catch (err: any) {
       setError(err?.message || String(err));
       setLoading(false);
